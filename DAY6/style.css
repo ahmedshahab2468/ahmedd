@@ -1,0 +1,29 @@
+.btn{
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: 1s;
+}
+*{
+    padding: 50px;
+}
+
+img{
+    width: 400px;
+    height: 400px;
+    animation: aa 3s infinite;
+}
+@keyframes aa{
+    0%{
+         width: 400px;
+         height: 400px;
+    }
+    100%{
+         width: 500px;
+            height: 500px;
+    }
+}

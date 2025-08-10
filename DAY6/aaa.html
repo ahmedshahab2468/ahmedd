@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthVantage | Your Complete Wellness Resource</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2a7f62;
+            --primary-light: #3daa88;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #6c757d;
+            --light-gray: #eef2f6;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .active a {
+            color: var(--primary);
+        }
+
+        .nav-links .active a::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(42, 127, 98, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(42, 127, 98, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(120deg, rgba(42, 127, 98, 0.9) 0%, rgba(52, 152, 219, 0.85) 100%), url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background-color: var(--primary);
+            border-radius: 5px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            font-size: 2.5rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .feature-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-content h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-content p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Health Topics */
+        .health-topics {
+            padding: 6rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .topic-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: var(--transition);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .topic-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .topic-content {
+            padding: 1.8rem;
+        }
+
+        .topic-content h3 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .topic-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 6rem 0;
+            background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .newsletter::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-form {
+            max-width: 550px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.8rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.9rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* BMI Calculator */
+        .bmi-calculator {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
+        .calculator-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 127, 98, 0.2);
+        }
+
+        .result {
+            margin-top: 1.8rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        /* Additional Pages Sections */
+        .page-section {
+            padding: 6rem 0;
+        }
+
+        .page-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .page-content {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .page-content h3 {
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .page-content h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 30px;
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+
+        .page-content p {
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .page-content ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .page-content ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .page-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .benefit-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, white 0%, var(--light-gray) 100%);
+        }
+
+        .benefit-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            padding: 0.2rem 0;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 0 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .page-section {
+                padding: 4rem 0;
+            }
+            
+            .page-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+            
+            .page-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <h1>HealthVantage</h1>
+                </div>
+                <ul class="nav-links">
+                    <li class="active"><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#topics">Health Topics</a></li>
+                    <li><a href="#bmi">BMI Calculator</a></li>
+                    <li><a href="#nutrition">Nutrition</a></li>
+                    <li><a href="#fitness">Fitness</a></li>
+                    <li><a href="#mental">Mental Health</a></li>
+                    <li><a href="#prevention">Prevention</a></li>
+                    <li><a href="#newsletter">Newsletter</a></li>
+                </ul>
+                <a href="#contact" class="btn">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Journey to Better Health Starts Here</h1>
+                <p>Discover personalized health resources, expert advice, and practical tools to help you live your healthiest life. Join our community of wellness enthusiasts today.</p>
+                <div class="hero-btns">
+                    <a href="#features" class="btn">Explore Health Resources</a>
+                    <a href="#bmi" class="btn btn-outline">Calculate Your BMI</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose HealthVantage</h2>
+                <p>Your trusted source for comprehensive health and wellness information</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Expert Guidance</h3>
+                        <p>Access evidence-based health information reviewed by medical professionals to make informed decisions about your health and wellness journey.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Personalized Tools</h3>
+                        <p>Use our interactive health calculators, trackers, and personalized plans to monitor and improve your wellness journey.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-medical"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Comprehensive Resources</h3>
+                        <p>Explore our extensive library of articles, videos, and guides covering nutrition, fitness, mental health, and preventive care.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Topics Section -->
+    <section class="health-topics" id="topics">
+        <div class="container">
+            <div class="section-title">
+                <h2>Health Topics</h2>
+                <p>Explore our comprehensive health resources and educational materials</p>
+            </div>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-img" style="background-image: url('https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');"></div>
+                    <div class="topic-content">
+                        <h3>Nutrition & Diet</h3>
+                        <p>Learn about balanced diets, superfoods, meal planning, and nutritional guidelines for optimal health at every stage of life.</p>
+                        <a href="#nutrition" class="btn">Explore Nutrition</a>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-img" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');"></div>
+                    <div class="topic-content">
+                        <h3>Fitness & Exercise</h3>
+                        <p>Discover workout routines, training tips, and how to stay active for all fitness levels and age groups.</p>
+                        <a href="#fitness" class="btn">Explore Fitness</a>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-img" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1752&q=80');"></div>
+                    <div class="topic-content">
+                        <h3>Mental Wellness</h3>
+                        <p>Resources for stress management, mindfulness, emotional health, and building resilience in challenging times.</p>
+                        <a href="#mental" class="btn">Explore Mental Health</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Page -->
+    <section class="page-section" id="nutrition">
+        <div class="container">
+            <h2>Nutrition & Healthy Eating</h2>
+            <div class="page-content">
+                <p>Proper nutrition is the foundation of good health. Our comprehensive guide to nutrition will help you make informed choices about what you eat, understand nutritional science, and develop sustainable eating habits that support your wellness goals.</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-apple-alt"></i>
+                        <h4>Balanced Diet</h4>
+                        <p>Learn how to create balanced meals that provide all essential nutrients for optimal health</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-weight"></i>
+                        <h4>Weight Management</h4>
+                        <p>Discover evidence-based strategies for healthy weight loss and maintenance</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-seedling"></i>
+                        <h4>Special Diets</h4>
+                        <p>Explore vegetarian, vegan, gluten-free, and other specialized eating plans</p>
+                    </div>
+                </div>
+                
+                <h3>Key Principles of Healthy Nutrition</h3>
+                <ul>
+                    <li><strong>Eat a variety of foods</strong> to ensure you get all essential nutrients</li>
+                    <li><strong>Focus on whole foods</strong> like fruits, vegetables, whole grains, and lean proteins</li>
+                    <li><strong>Limit processed foods</strong> high in sugar, salt, and unhealthy fats</li>
+                    <li><strong>Stay hydrated</strong> by drinking plenty of water throughout the day</li>
+                    <li><strong>Practice mindful eating</strong> by paying attention to hunger and fullness cues</li>
+                    <li><strong>Plan your meals</strong> to maintain healthy eating habits consistently</li>
+                </ul>
+                
+                <h3>Understanding Macronutrients</h3>
+                <p>Macronutrients are the nutrients your body needs in larger amounts: carbohydrates, proteins, and fats. Each plays a vital role in maintaining health:</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-bread-slice"></i>
+                        <h4>Carbohydrates</h4>
+                        <p>Your body's primary energy source. Focus on complex carbs like whole grains, fruits, and vegetables.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-drumstick-bite"></i>
+                        <h4>Proteins</h4>
+                        <p>Essential for building and repairing tissues. Include both animal and plant-based sources.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-oil-can"></i>
+                        <h4>Fats</h4>
+                        <p>Necessary for hormone production and nutrient absorption. Choose healthy unsaturated fats.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fitness Page -->
+    <section class="page-section" id="fitness" style="background-color: var(--light-gray);">
+        <div class="container">
+            <h2>Fitness & Exercise</h2>
+            <div class="page-content">
+                <p>Regular physical activity is essential for maintaining good health, preventing chronic diseases, and improving quality of life. Our fitness resources will help you develop an exercise routine that fits your lifestyle and goals.</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-running"></i>
+                        <h4>Cardiovascular Health</h4>
+                        <p>Improve heart health and endurance with aerobic exercises</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-dumbbell"></i>
+                        <h4>Strength Training</h4>
+                        <p>Build muscle mass, increase metabolism and strengthen bones</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-spa"></i>
+                        <h4>Flexibility & Balance</h4>
+                        <p>Enhance mobility and prevent injuries with stretching and balance exercises</p>
+                    </div>
+                </div>
+                
+                <h3>Creating Your Fitness Plan</h3>
+                <p>An effective fitness program should include four types of exercise:</p>
+                <ul>
+                    <li><strong>Aerobic exercise</strong> - 150 minutes of moderate activity per week</li>
+                    <li><strong>Strength training</strong> - 2-3 sessions per week targeting all major muscle groups</li>
+                    <li><strong>Flexibility exercises</strong> - Daily stretching to maintain range of motion</li>
+                    <li><strong>Balance exercises</strong> - Especially important for older adults to prevent falls</li>
+                </ul>
+                
+                <h3>Exercise for Different Life Stages</h3>
+                <p>Physical activity needs change throughout life. Here's how to stay active at every age:</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-child"></i>
+                        <h4>Children & Teens</h4>
+                        <p>60+ minutes of activity daily, including vigorous activities and strength-building exercises</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-user"></i>
+                        <h4>Adults</h4>
+                        <p>150-300 minutes of moderate activity weekly plus strength training twice a week</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-user-friends"></i>
+                        <h4>Older Adults</h4>
+                        <p>Focus on balance and flexibility while maintaining aerobic and strength activities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mental Health Page -->
+    <section class="page-section" id="mental">
+        <div class="container">
+            <h2>Mental Health & Wellness</h2>
+            <div class="page-content">
+                <p>Mental health is just as important as physical health. Our mental wellness resources provide strategies for managing stress, building resilience, and improving emotional wellbeing for a balanced, fulfilling life.</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-brain"></i>
+                        <h4>Stress Management</h4>
+                        <p>Learn techniques to reduce stress and improve coping mechanisms</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-meditation"></i>
+                        <h4>Mindfulness</h4>
+                        <p>Develop present-moment awareness for greater peace and clarity</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-bed"></i>
+                        <h4>Sleep Hygiene</h4>
+                        <p>Improve sleep quality for better mental and physical health</p>
+                    </div>
+                </div>
+                
+                <h3>Building Emotional Resilience</h3>
+                <p>Resilience is the ability to bounce back from adversity. Strengthen your emotional resilience with these strategies:</p>
+                <ul>
+                    <li><strong>Develop a strong support network</strong> of friends and family</li>
+                    <li><strong>Practice self-care</strong> through regular exercise, healthy eating, and adequate sleep</li>
+                    <li><strong>Set realistic goals</strong> and take steps toward achieving them</li>
+                    <li><strong>Maintain a positive outlook</strong> and practice gratitude daily</li>
+                    <li><strong>Learn from experience</strong> rather than dwelling on mistakes</li>
+                    <li><strong>Seek professional help</strong> when needed without stigma or shame</li>
+                </ul>
+                
+                <h3>Mental Health Conditions</h3>
+                <p>Understanding common mental health conditions is the first step toward getting help:</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-sad-tear"></i>
+                        <h4>Depression</h4>
+                        <p>Persistent sadness, loss of interest, and other symptoms affecting daily life</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-stress"></i>
+                        <h4>Anxiety Disorders</h4>
+                        <p>Excessive worry, panic attacks, and physical symptoms of anxiety</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-trauma"></i>
+                        <h4>Trauma-Related Disorders</h4>
+                        <p>Conditions like PTSD that develop after experiencing traumatic events</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prevention Page -->
+    <section class="page-section" id="prevention" style="background-color: var(--light-gray);">
+        <div class="container">
+            <h2>Preventive Health Care</h2>
+            <div class="page-content">
+                <p>Preventive care is key to maintaining good health and catching potential issues early. Learn about screenings, vaccinations, and healthy habits that can prevent illness and promote longevity.</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-syringe"></i>
+                        <h4>Vaccinations</h4>
+                        <p>Stay up-to-date with recommended immunizations for all ages</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-stethoscope"></i>
+                        <h4>Screenings</h4>
+                        <p>Regular health screenings based on age, gender, and risk factors</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h4>Healthy Habits</h4>
+                        <p>Lifestyle choices that significantly reduce disease risk</p>
+                    </div>
+                </div>
+                
+                <h3>Essential Preventive Screenings</h3>
+                <p>Regular health screenings can detect problems before symptoms appear. Key screenings include:</p>
+                <ul>
+                    <li><strong>Blood pressure checks</strong> - At least every 2 years for adults</li>
+                    <li><strong>Cholesterol tests</strong> - Every 4-6 years for adults 20+</li>
+                    <li><strong>Diabetes screening</strong> - Starting at age 35 or earlier if at risk</li>
+                    <li><strong>Cancer screenings</strong> - Mammograms, colonoscopies, skin checks based on age and risk</li>
+                    <li><strong>Bone density scans</strong> - For women 65+ and younger women with risk factors</li>
+                </ul>
+                
+                <h3>Lifestyle Prevention Strategies</h3>
+                <p>Adopting these healthy habits can prevent up to 80% of chronic diseases:</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-utensils"></i>
+                        <h4>Healthy Eating</h4>
+                        <p>Plant-focused diet rich in fruits, vegetables, whole grains, and lean proteins</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-walking"></i>
+                        <h4>Regular Activity</h4>
+                        <p>150 minutes of moderate exercise weekly plus strength training</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-wine-glass-alt"></i>
+                        <h4>Limit Alcohol</h4>
+                        <p>Moderate consumption: 1 drink/day for women, 2 for men</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-smoking-ban"></i>
+                        <h4>Avoid Tobacco</h4>
+                        <p>Quitting smoking has immediate and long-term health benefits</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <h2>Stay Updated with Health Tips</h2>
+            <p>Subscribe to our newsletter for the latest health news, expert advice, and wellness tips delivered to your inbox weekly.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- BMI Calculator -->
+    <section class="bmi-calculator" id="bmi">
+        <div class="container">
+            <div class="section-title">
+                <h2>BMI Calculator</h2>
+                <p>Check your Body Mass Index to understand your weight category</p>
+            </div>
+            <div class="calculator-container">
+                <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" placeholder="Enter your height">
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="Enter your weight">
+                </div>
+                <button class="btn" onclick="calculateBMI()">Calculate BMI</button>
+                <div class="result" id="result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>HealthVantage</h3>
+                    <p>Your trusted partner in health and wellness. We provide evidence-based resources to help you make informed decisions about your health journey.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#topics">Health Topics</a></li>
+                        <li><a href="#bmi">BMI Calculator</a></li>
+                        <li><a href="#nutrition">Nutrition Guide</a></li>
+                        <li><a href="#fitness">Fitness Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Health Topics</h3>
+                    <ul class="footer-links">
+                        <li><a href="#nutrition">Nutrition & Diet</a></li>
+                        <li><a href="#fitness">Fitness & Exercise</a></li>
+                        <li><a href="#mental">Mental Wellness</a></li>
+                        <li><a href="#prevention">Preventive Care</a></li>
+                        <li><a href="#">Chronic Conditions</a></li>
+                        <li><a href="#">Healthy Aging</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@healthvantage.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Wellness St, Health City</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 HealthVantage. All rights reserved. This site provides educational content and is not a substitute for professional medical advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // BMI Calculator Function
+        function calculateBMI() {
+            const height = document.getElementById('height').value / 100; // Convert cm to meters
+            const weight = document.getElementById('weight').value;
+            
+            if (height && weight) {
+                const bmi = weight / (height * height);
+                const result = document.getElementById('result');
+                
+                let category = '';
+                if (bmi < 18.5) {
+                    category = 'Underweight';
+                    result.style.backgroundColor = '#f8d7da';
+                    result.style.color = '#721c24';
+                } else if (bmi < 25) {
+                    category = 'Normal weight';
+                    result.style.backgroundColor = '#d4edda';
+                    result.style.color = '#155724';
+                } else if (bmi < 30) {
+                    category = 'Overweight';
+                    result.style.backgroundColor = '#fff3cd';
+                    result.style.color = '#856404';
+                } else {
+                    category = 'Obese';
+                    result.style.backgroundColor = '#f8d7da';
+                    result.style.color = '#721c24';
+                }
+                
+                result.innerHTML = `<h4>Your BMI Result</h4><p>${bmi.toFixed(1)} (${category})</p>`;
+                result.style.display = 'block';
+            } else {
+                alert('Please enter both height and weight.');
+            }
+        }
+
+        // Newsletter Subscription
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our next newsletter soon.`);
+            this.reset();
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active navigation
+                    document.querySelectorAll('.nav-links li').forEach(li => {
+                        li.classList.remove('active');
+                    });
+                    this.parentElement.classList.add('active');
+                }
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Set active navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-links li').forEach(li => {
+                li.classList.remove('active');
+                if (li.querySelector('a').getAttribute('href') === `#${current}`) {
+                    li.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
